@@ -26,7 +26,7 @@ import com.caku.service.ProductService;
 public class AdminController {
 
     //directory path to save product images
-    public static String uploadDir=System.getProperty("user.dir")+"/src/main/resources/static/images/productImages";
+    public static String uploadDir=System.getProperty("user.dir")+"/src/main/resources/static/productImages";
 
     //obj of category service
     @Autowired
@@ -99,6 +99,7 @@ public class AdminController {
     public String productAddGet(Model m){
         m.addAttribute("productDTO", new ProductDTO());
         m.addAttribute("categories", categoryService.getAllCategory());
+        m.addAttribute("isUpdate", false);
         return "productsAdd";
     }
     
@@ -142,30 +143,33 @@ public class AdminController {
     //if user updates a product
     @GetMapping("/admin/product/update/{id}")
     public String updateProduct(@PathVariable long id, Model model) {
-        Optional<Product> optionalProduct = productService.getProductById(id);
-    
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            ProductDTO productDTO = new ProductDTO();
-            productDTO.setId(product.getId());
-            productDTO.setName(product.getName());
-            productDTO.setCategoryId(product.getCategory().getId());
-            productDTO.setPrice(product.getPrice());
-            productDTO.setWeight(product.getWeight());
-            productDTO.setDescription(product.getDescription());
-            productDTO.setImageName(product.getImageName());
-    
-            model.addAttribute("categories", categoryService.getAllCategory());
-            model.addAttribute("productDTO", productDTO);
-    
-            model.addAttribute("isUpdate", true); // Add this attribute to indicate update mode
-    
-            return "productsAdd"; // Use the same template for both add and update
-        } else {
-            // Handle if product is not found
-            return "redirect:/admin/products"; // Redirect to products list
-        }
+    Optional<Product> optionalProduct = productService.getProductById(id);
+
+    if (optionalProduct.isPresent()) {
+        Product product = optionalProduct.get();
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());
+        productDTO.setName(product.getName());
+        productDTO.setCategoryId(product.getCategory().getId());
+        productDTO.setPrice(product.getPrice());
+        productDTO.setWeight(product.getWeight());
+        productDTO.setDescription(product.getDescription());
+        productDTO.setImageName(product.getImageName());
+
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("productDTO", productDTO);
+        model.addAttribute("isUpdate", true); // Add this attribute to indicate update mode
+
+        return "productsAdd"; // Use the same template for both add and update
+    } else {
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("productDTO", new ProductDTO());
+        model.addAttribute("isUpdate", false); // Add this attribute even when product is not found
+
+        return "productsAdd"; // Use the same template to handle the "not found" case
     }
+}
+
     
     
     
