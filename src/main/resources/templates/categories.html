@@ -49,11 +49,11 @@
         </tr>
         </thead>
         <tbody>
-            <!-- fetching all categories -->
+
         <tr th:each="category, iStat : ${categories}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${category.name}">Larry</td>
-            <!-- deleting & updating a category -->
+
             <td><a href="" th:href="@{/admin/categories/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a></td>
             <td><a href="" th:href="@{/admin/categories/update/{id}(id=${category.id})}" class="btn btn-warning">Update</a></td>
 

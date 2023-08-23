@@ -19,6 +19,8 @@ public class CustomUserDetail extends User implements UserDetails {
         List<GrantedAuthority> authorityList=new ArrayList<>();
         super.getRoles().forEach(role -> {
             authorityList.add(new SimpleGrantedAuthority(role.getName()));
+            // test
+            System.out.println("userDetails returning this"+role.getName().toString());
         });
         return authorityList;
     }

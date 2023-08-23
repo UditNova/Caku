@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -18,43 +17,73 @@ import com.caku.service.CustomUserDetailService;
 @Configuration
 public class SecurityConfig {
 
+        // @Autowired
+        // GoogleOAuth2SuccessHandler googleOAuth2SuccessHandler;
+        @Autowired
+        CustomUserDetailService customUserDetailService;
+
        @Bean
        public UserDetailsService userDetailsService(){
         return new CustomUserDetailService();
        }
 
        @Bean
-        public static PasswordEncoder passwordEncoder(){
+       public BCryptPasswordEncoder bCryptPasswordEncoder(){
                 return new BCryptPasswordEncoder();
-        }
+       }
 
        @Autowired
        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-                auth.userDetailsService(userDetailsService())
-                        .passwordEncoder(passwordEncoder());
+                auth.userDetailsService(customUserDetailService);
+                        
        }
        
+        //RequestMatcher adminRequestMatcher = new AntPathRequestMatcher("/admin", "/h2-console/**", "/shop/**", "/");
+      // Define an array of patterns
+        AntPathRequestMatcher[] permitAllPatterns = {
+                new AntPathRequestMatcher("/register/**"),
+                new AntPathRequestMatcher("/shop/**"),
+                new AntPathRequestMatcher("/"),
+                new AntPathRequestMatcher("/h2-console/**"),
+                // Add more patterns as needed
+                new AntPathRequestMatcher("/css/**"),  // Static resources
+                new AntPathRequestMatcher("/js/**"),   // Static resources
+                new AntPathRequestMatcher("/productImages/**"),// Static resources
+                new AntPathRequestMatcher("/cakeImages/**"),//static resources
+                new AntPathRequestMatcher("/images/**")//static resources
+        };
 
         //configure
         @Bean
         public SecurityFilterChain defauSecurityFilterChain(HttpSecurity http) throws Exception{
                 http.csrf().disable()
-                        .authorizeHttpRequests((authorize)->
-                        authorize.requestMatchers("/register/**", "/shop", "h2-console").permitAll()
-                                .requestMatchers("/").permitAll()
-                                .requestMatchers("/admin").hasRole("ADMIN")
-                        ).formLogin(
+                .authorizeHttpRequests((authorize) ->{
+                        authorize
+                                .requestMatchers(permitAllPatterns).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
+                                .anyRequest().authenticated(); // This ensures that other requests are authenticated.
+                    }).formLogin(
                                 form -> form
                                         .loginPage("/login")
                                         .loginProcessingUrl("/login")
-                                        .defaultSuccessUrl("/")
                                         .permitAll()
+                                        .failureUrl("/login?=true")
+                                        .defaultSuccessUrl("/")
+                                        .usernameParameter("email")
+                                        .passwordParameter("password")
+                                         
+                        // ).oauth2Login(
+                        //         oauth2->oauth2
+                        //                 .loginPage("/login")
+                        //                 .successHandler(googleOAuth2SuccessHandler)
                         ).logout(
                                 logout -> logout
                                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                        .permitAll()
+                                        .logoutSuccessUrl("/login")
+                                        .invalidateHttpSession(true)
+                                        .deleteCookies("JSESSIONID")
                         );
-
+                        http.headers().frameOptions().disable();
 
                 return http.build();
         }

@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.caku.global.GlobalData;
 import com.caku.model.Role;
 import com.caku.model.User;
 import com.caku.repository.RoleRepository;
 import com.caku.repository.UserRepository;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class LoginController {
     
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -30,6 +30,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(){
+        GlobalData.cart.clear();
         return "login";
     }
 
@@ -38,16 +39,15 @@ public class LoginController {
         return "register";
     }
 
-    @PostMapping
-    public String registerPost(@ModelAttribute("user") User user, HttpServletRequest request) throws ServletException {
+    @PostMapping("/register")
+    public String registerPost(@ModelAttribute("user") User user){
         String password= user.getPassword();
         user.setPassword(bCryptPasswordEncoder.encode(password));
         List<Role> roles=new ArrayList<>();
         roles.add(roleRepository.findById(2).get());
         user.setRoles(roles);
         userRepository.save(user);
-        request.login(user.getEmail(), password);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
 }

@@ -41,11 +41,10 @@
 <div class="container">
     <h3>Add a new Product</h3>
     <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
-        <input type="hidden" th:field="*{id}" th:if="${isUpdate}" /> <!-- Show the ID input only in update mode -->
         <div class="row">
             <div class="col-sm-5">
 
-                <!-- <input type="hidden" name="id" th:field="*{id}"> -->
+                <input type="hidden" name="id" th:field="*{id}">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"
@@ -79,14 +78,14 @@
             <div class="col-sm-5">
                 <p>Product Image</p>
                 <div class="custom-file">
-                    <input type="file"  class="custom-file-input" name="productImage" accept="image/jpeg, image/png, image/jpg"  id="productImage"/>
+                    <input type="file"  class="custom-file-input" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
                     <label class="custom-file-label" for="productImage">Choose file</label>
                 </div>
                 <div class="form-group">
                     <img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages/' + productDTO.imageName}}" style="margin-top: 20px" alt=" ">
                 </div>
                 <input type="hidden" name="imgName" th:value="${productDTO.imageName}">
-                <button type="submit" class="btn btn-primary" th:text="${isUpdate ? 'Update' : 'Submit'}"></button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>

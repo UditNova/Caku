@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -10,19 +10,63 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Product Details</title>
+    
+    <!-- Custom CSS for the product details page -->
+    <style>
+        body {
+            background-color: #333; /* Dark background */
+            color: #fff; /* Light text */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation bar style */
+        .navbar {
+            background-color: #333; /* Dark background */
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff; /* Light text */
+        }
+
+        .navbar-light .navbar-toggler-icon {
+            background-color: #fff; /* Light color for the toggle icon */
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark container background */
+            color: #fff; /* Light text in the container */
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #ff6b6b; /* Primary button color */
+            color: #fff; /* Light text on primary button */
+        }
+
+        img.product-image {
+            margin-top: 50px; /* Adjust margin as needed */
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Add more specific styles as needed for your product details page */
+    </style>
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="auto" height="40"
-                 class="d-inline-block align-top" alt=""/>
+            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -48,14 +92,13 @@
                     <span class="nav-link" th:text="${cartCount}"></span>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>
-<div class="container mt-5">
+<div class="container">
     <div class="row">
         <div class="col-sm-5 d-flex justify-content-center">
-            <img class="mt-5" height="300px" width="300px" src="" th:src="@{${'/productImages/' + product.imageName}}"
+            <img class="product-image" height="300px" width="300px" th:src="@{${'/productImages/' + product.imageName}}"
                  alt="${product.imageName}">
         </div>
         <div class="col-sm-7 mt-5">
@@ -63,14 +106,13 @@
             <p th:text="${product.category.name}"></p>
             <h2>₹ <span th:text="${product.price}"></span></h2>
             <h5>Weight:
-                <spna th:text="${product.weight}"></spna> grams.
+                <span th:text="${product.weight}"></span> grams.
             </h5>
             <p th:text="${product.description}"></p>
-            <a href="" th:href="@{/addToCart/{id}(id = ${product.id})}" class="btn btn-primary">Add to cart</a>
+            <a href="" th:href="@{/addToCart/{id}(id=${product.id})}" class="btn btn-primary">Add to cart</a>
         </div>
     </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

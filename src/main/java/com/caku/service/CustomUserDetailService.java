@@ -17,6 +17,10 @@ public class CustomUserDetailService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
+    
+    public boolean doesUserExistByEmail(String email) {
+        return userRepository.findUserByEmail(email).isPresent();
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -24,7 +28,7 @@ public class CustomUserDetailService implements UserDetailsService {
         Optional<User> user=userRepository.findUserByEmail(email);
 
         user.orElseThrow(()->new UsernameNotFoundException("User name not found!"));
-
+        System.out.println("customUserDetails called");
         return user.map(CustomUserDetail::new).get();
     }
     

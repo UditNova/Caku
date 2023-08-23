@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -10,12 +10,73 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Shop</title>
+    
+    <!-- Custom CSS for the shop page -->
+    <style>
+        body {
+            background-color: #333; /* Dark background */
+            color: #fff; /* Light text */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Background image */
+        .background-image {
+            /* background-image: url('/images/indexbg.jpeg'); Replace 'your-image.jpg' with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 700px; /* Wider container */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark container background */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Navigation bar style */
+        .navbar {
+            background-color: #333; /* Dark background */
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff; /* Light text */
+        }
+
+        .navbar-light .navbar-toggler-icon {
+            background-color: #fff; /* Light color for the toggle icon */
+        }
+
+        /* Shop-specific styles */
+        .list-group-item {
+            background-color: #333; /* Dark background for list items */
+            color: #fff; /* Light text for list items */
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark card background */
+            color: #fff; /* Light text in the card */
+        }
+
+        .btn-primary {
+            background-color: #ff6b6b; /* Primary button color */
+            color: #fff; /* Light text on primary button */
+        }
+
+        /* Add more specific styles as needed for your shop page */
+    </style>
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<nav class="navbar navbar-expand-lg " >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
@@ -46,7 +107,6 @@
                     <span class="nav-link" th:text="${cartCount}">0</span>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>
@@ -59,7 +119,6 @@
                 <a href="" th:each="category, iStat : ${categories}"
                    th:href="@{/shop/category/{id}(id=${category.id})}"><li
                                class="list-group-item" th:text="${category.name}"></li></a>
-
             </ul>
         </div>
         <div class="col-sm-9">
@@ -81,10 +140,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
