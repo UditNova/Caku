@@ -17,10 +17,13 @@ import com.caku.service.CustomUserDetailService;
 @Configuration
 public class SecurityConfig {
 
-        // @Autowired
-        // GoogleOAuth2SuccessHandler googleOAuth2SuccessHandler;
+        @Autowired
+        GoogleOAuth2SuccessHandler googleOAuth2SuccessHandler;
         @Autowired
         CustomUserDetailService customUserDetailService;
+        @Autowired
+        CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
 
        @Bean
        public UserDetailsService userDetailsService(){
@@ -59,23 +62,23 @@ public class SecurityConfig {
                 http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->{
                         authorize
-                                .requestMatchers(permitAllPatterns).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
-                                .anyRequest().authenticated(); // This ensures that other requests are authenticated.
+        .requestMatchers(permitAllPatterns).permitAll()
+        .anyRequest().authenticated();
                     }).formLogin(
                                 form -> form
-                                        .loginPage("/login")
-                                        .loginProcessingUrl("/login")
-                                        .permitAll()
-                                        .failureUrl("/login?=true")
-                                        .defaultSuccessUrl("/")
+                                        .loginPage("/login").permitAll()
+                                        //.loginProcessingUrl("/login")
+                                        //.permitAll()
+                                        .failureUrl("/login?error=true")
+                                        .successHandler(customAuthenticationSuccessHandler)
                                         .usernameParameter("email")
                                         .passwordParameter("password")
                                          
-                        // ).oauth2Login(
-                        //         oauth2->oauth2
-                        //                 .loginPage("/login")
-                        //                 .successHandler(googleOAuth2SuccessHandler)
+                        ).oauth2Login(
+                                oauth2->oauth2
+                                        .loginPage("/login")
+                                        .successHandler(googleOAuth2SuccessHandler)
                         ).logout(
                                 logout -> logout
                                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

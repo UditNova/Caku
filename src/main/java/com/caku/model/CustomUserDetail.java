@@ -16,14 +16,14 @@ public class CustomUserDetail extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorityList=new ArrayList<>();
-        super.getRoles().forEach(role -> {
-            authorityList.add(new SimpleGrantedAuthority(role.getName()));
-            // test
-            System.out.println("userDetails returning this"+role.getName().toString());
-        });
-        return authorityList;
+       List<GrantedAuthority> authorityList = new ArrayList<>();
+       super.getRoles().forEach(role->{
+            authorityList.add(new SimpleGrantedAuthority(role.getName()) );
+            //System.out.println("called custom user details"); just for testing purpose
+       });
+       return authorityList;
     }
+
 
     @Override
     public String getUsername() {
