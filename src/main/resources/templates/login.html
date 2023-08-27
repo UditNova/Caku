@@ -10,14 +10,37 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Document</title>
+    <style>
+        .bodycolor{
+            background-color:#5f4b3d;
+        }
+    
+        .navbar-brand {
+            font-size: 2.5rem;
+            font-family: "ubuntu";
+            font-weight: bold;
+        }
+        .nav-item {
+            padding: 0 10px;
+        }
+        .navbar {
+            padding-bottom: 5.5rem;
+        }
+
+        .textcolor{
+            color:white;
+        }
+        
+    </style>
+    
 </head>
-<body>
+<body class="bodycolor">
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<nav class="navbar navbar-expand-lg navbar-dark" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+            <img th:src="@{/images/pngwing.com (5).png}"  src="../static/images/pngwing.com (5).png" width="auto" height="70"  alt=""/>Caku store
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,7 +64,7 @@
         </div>
     </div>
 </nav>
-<div class="container">
+<div class="container textcolor">
     <div class="row">
         <div class="col-sm-6">
             <h2>Login</h2>
@@ -60,7 +83,7 @@
                     Invalid username or password.
                 </div>
 
-                <input type="submit" value="Login" class="btn btn-primary btn-block">
+                <input type="submit" value="Login" class="btn btn-secondary btn-block">
                 <br>
                 <span >Don't have an account <a class="linkControl" href="./register.html"
                                                 th:href="@{/register}">Register here</a></span>
@@ -69,7 +92,7 @@
             </form>
             <br>
             <h3>OR</h3>
-            <a href="/oauth2/authorization/google" class="btn btn-primary">Sign-In with google </a>
+            <a href="/oauth2/authorization/google" class="btn btn-dark">Sign-In with google </a>
 
         </div>
 

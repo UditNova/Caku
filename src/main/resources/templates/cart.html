@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -9,79 +9,60 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <title>Cart</title>
-    
-    <!-- Custom CSS for the cart page -->
+
+    <title>Document</title>
     <style>
-        body {
-            background-color: #333; /* Dark background */
-            color: #fff; /* Light text */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+        .bodycolor
+        {
+            background-color:#1e130b;
         }
-
-        /* Background image */
-        .background-image {
-            /* background-image: url('/images/indexbg.jpeg'); Replace 'your-image.jpg' with your image path */
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        
+        .card{
+            border-radius:3%;
+            position:relative;
         }
-
-        .container {
-            max-width: 1000px; /* Wider container */
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark container background */
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        .card-body
+        {
+            text-align:left;
+            font-size:1rem;
         }
-
-        /* Navigation bar style */
-        .navbar {
-            background-color: #333; /* Dark background */
+        .card-deck {
+            margin: 70px 50px 70px;
         }
-
-        .navbar-light .navbar-nav .nav-link {
-            color: #fff; /* Light text */
+        .card-bgcolor{
+            background-color: #0b0502;
         }
-
-        .navbar-light .navbar-toggler-icon {
-            background-color: #fff; /* Light color for the toggle icon */
+        .card-color{
+            color: white;
         }
+        
+p {
+    color:white;
+    font-size:20px;
+}
+.pcolor{
+    color:white;
+}
 
-        /* Shop-specific styles */
-        .list-group-item {
-            background-color: #333; /* Dark background for list items */
-            color: #fff; /* Light text for list items */
-        }
+.navbar-brand {
+    font-size: 2.5rem;
+    font-family: "ubuntu";
+    font-weight: bold;
+}
 
-        .card {
-        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark card background */
-        color: #fff; /* Light text in the card */
-        width: 100%; /* Make the cards wider */
-        border-radius: 10px; /* Add rounded corners */
-        padding: 15px; /* Add some padding for spacing */
-    }
 
-        .btn-primary {
-            background-color: #ff6b6b; /* Primary button color */
-            color: #fff; /* Light text on primary button */
-        }
 
-        /* Add more specific styles as needed for your cart page */
+
     </style>
+
 </head>
-<body>
+<body class="bodycolor">
 
 
-<nav class="navbar navbar-expand-lg" >
+<nav class="navbar navbar-expand-lg navbar-dark" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+            <img th:src="@{/images/pngwing.com (5).png}"  src="images/pngwing.com (5).png" width="auto" height="70" alt=""/>Caku store
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -114,7 +95,7 @@
     </div>
 </nav>
 <main>
-    <div class="container">
+    <div class="container-fluid">
 
         <!--Section: Block Content-->
         <section class="mt-5 mb-4">
@@ -126,8 +107,8 @@
                 <div class="col-lg-8">
 
                     <!-- Card -->
-                    <div class="card wish-list mb-4">
-                        <div class="card-body">
+                    <div class="card wish-list mb-4 card-bgcolor">
+                        <div class="card-body card-color">
 
                             <h5 class="mb-4">Cart (<span th:text="${cartCount}">2</span> items)</h5>
 
@@ -146,12 +127,16 @@
                                             <div>
                                                 <h5 th:text="${item.name}">Blue denim shirt</h5>
                                                 <p class="mb-3 text-uppercase small">Weight: <span th:text="${item.weight}"></span> grams</p>
+<!--                                                <p class="mb-2 text-uppercase small">Category: <span th:text="${item.category.name}"></span></p>-->
+
                                             </div>
+
                                         </div>
                                         <div class="mt-5 d-flex justify-content-between align-items-center">
                                             <div>
                                                 <a href="#!" th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"  type="button" class="card-link-secondary small text-uppercase mr-3"><i
                                                         class="fas fa-trash-alt mr-1"></i> Remove item </a>
+
                                             </div>
                                             <p class="mb-0"><span><strong>₹<span th:text="${item.price}"></span></strong></span></p>
                                         </div>
@@ -160,11 +145,14 @@
                             </div>
                             <hr class="mb-4">
 
-                            <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
+                            <p class="text-light mb-0 pcolor"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
                                 items to your cart does not mean booking them.</p>
 
                         </div>
                     </div>
+
+
+
 
                 </div>
                 <!--Grid column-->
@@ -173,10 +161,10 @@
                 <div class="col-lg-4">
 
                     <!-- Card -->
-                    <div class="card mb-4">
-                        <div class="card-body">
+                    <div class="card mb-4 card-bgcolor">
+                        <div class="card-body ">
 
-                            <h5 class="mb-3">The total amount </h5>
+                            <h5 class="mb-3 pcolor">The total amount </h5>
 
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
@@ -198,7 +186,7 @@
                                 </li>
                             </ul>
 
-                            <a th:href="@{/checkout}" h class="btn btn-primary btn-block waves-effect waves-light">go to
+                            <a th:href="@{/checkout}" h class="btn btn-secondary btn-block waves-effect waves-light">go to
                                 checkout</a>
 
                         </div>
@@ -206,8 +194,8 @@
                     <!-- Card -->
 
                     <!-- Card -->
-                    <div class="card mb-4">
-                        <div class="card-body">
+                    <div class="card mb-4 card-bgcolor">
+                        <div class="card-body ">
 
                             <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample"
                                aria-expanded="false" aria-controls="collapseExample">
@@ -239,6 +227,10 @@
     </div>
 </main>
 <!--Main layout-->
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -10,9 +10,59 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Document</title>
+
+    <!-- custom css added here -->
+    <style>
+        .bodycolor
+        {
+            background-color:#1e130b;
+            
+        }
+        .bgimage{
+        background-image: url('https://img.freepik.com/premium-photo/homemade-cupcakes-row-black-background_23-2147840287.jpg');
+        background-size:contain;
+        background-position: center;
+        color: white;
+        }
+         .card{
+            border-radius:12.5%;
+            background-color: #0b0502;
+        }
+        .card-body
+        {
+            text-align:left;
+            font-size:2rem;
+        }
+        .card-deck {
+            margin: 70px 50px 70px;
+        }
+        .card-title{
+          color:white;
+        } 
+        
+p {
+    color:white;
+    font-size:20px;
+}
+ .card-text{
+    color:grey;
+    font-size:20px;
+} 
+
+.navbar-brand {
+    font-size: 2.5rem;
+    font-family: "ubuntu";
+    font-weight: bold;
+}
+
+.midtext{
+    padding-bottom: 200px;
+}
+    </style>
+
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<body class="bodycolor">
+<nav class="navbar navbar-expand-lg navbar-dark" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
@@ -36,28 +86,28 @@
         </div>
     </div>
 </nav>
-<div class="jumbotron text-center">
+<<div class="jumbotron text-center bgimage midtext">
     <h1 class="display-4">Welcome back, Admin</h1>
     <p>Easily manage your data from this admin <mark>CMS</mark></p>
 </div>
-<div class="container-fluid">
+<div class="container" style="margin: auto 25% auto;">
     <div class="row">
         <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
+            <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Categories</h4>
-                    <p class="card-text">Manage the categories section here.</p>
-                    <a href="#" th:href="@{/admin/categories}" class="card-link btn btn-primary">Manage</a>
+                    <h2 class="card-title">Categories</h2>
+                    <p class="card-text">Manage the categories here.</p>
+                    <a href="#" th:href="@{/admin/categories}" class="card-link btn btn-dark btn-block btn-lg">Manage</a>
 
                 </div>
             </div>
         </div>
         <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
+            <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Products</h4>
+                    <h2 class="card-title">Products</h2>
                     <p class="card-text">Manage all the products here.</p>
-                    <a href="#" th:href="@{/admin/products}" class="card-link btn btn-primary">Manage</a>
+                    <a href="#" th:href="@{/admin/products}" class="card-link btn btn-dark btn-block btn-lg">Manage</a>
 
                 </div>
             </div>

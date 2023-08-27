@@ -59,34 +59,34 @@ public class SecurityConfig {
         //configure
         @Bean
         public SecurityFilterChain defauSecurityFilterChain(HttpSecurity http) throws Exception{
-                http.csrf().disable()
-                .authorizeHttpRequests((authorize) ->{
+            http.csrf(csrf -> csrf.disable())
+                    .authorizeHttpRequests((authorize) -> {
                         authorize
                                 .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
-        .requestMatchers(permitAllPatterns).permitAll()
-        .anyRequest().authenticated();
+                                .requestMatchers(permitAllPatterns).permitAll()
+                                .anyRequest().authenticated();
                     }).formLogin(
-                                form -> form
-                                        .loginPage("/login").permitAll()
-                                        //.loginProcessingUrl("/login")
-                                        //.permitAll()
-                                        .failureUrl("/login?error=true")
-                                        .successHandler(customAuthenticationSuccessHandler)
-                                        .usernameParameter("email")
-                                        .passwordParameter("password")
-                                         
-                        ).oauth2Login(
-                                oauth2->oauth2
-                                        .loginPage("/login")
-                                        .successHandler(googleOAuth2SuccessHandler)
-                        ).logout(
-                                logout -> logout
-                                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                        .logoutSuccessUrl("/login")
-                                        .invalidateHttpSession(true)
-                                        .deleteCookies("JSESSIONID")
-                        );
-                        http.headers().frameOptions().disable();
+                    form -> form
+                            .loginPage("/login").permitAll()
+                            //.loginProcessingUrl("/login")
+                            //.permitAll()
+                            .failureUrl("/login?error=true")
+                            .successHandler(customAuthenticationSuccessHandler)
+                            .usernameParameter("email")
+                            .passwordParameter("password")
+
+            ).oauth2Login(
+                    oauth2 -> oauth2
+                            .loginPage("/login")
+                            .successHandler(googleOAuth2SuccessHandler)
+            ).logout(
+                    logout -> logout
+                            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                            .logoutSuccessUrl("/login")
+                            .invalidateHttpSession(true)
+                            .deleteCookies("JSESSIONID")
+            );
+            http.headers(headers -> headers.frameOptions().disable());
 
                 return http.build();
         }

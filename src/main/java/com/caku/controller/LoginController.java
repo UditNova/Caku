@@ -40,7 +40,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public String registerPost(@ModelAttribute("user") User user){
+    public String registerPost(@ModelAttribute User user){
         String password= user.getPassword();
         user.setPassword(bCryptPasswordEncoder.encode(password));
         List<Role> roles=new ArrayList<>();

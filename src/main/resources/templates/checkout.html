@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -11,61 +11,57 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
     <title>Document</title>
-    
-    <!-- Custom CSS for the page -->
     <style>
-        body {
-            background-color: #333; /* Dark background */
-            color: #fff; /* Light text */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+        .bodycolor
+        {
+            background-image: url('https://img.freepik.com/premium-photo/stack-chocolate-cupcakes-paper-wrappers-black-background_651117-189.jpg');
+            background-color:#1e130b;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover;
+            
+            
+        }
+        .card{
+            border-radius:3%;
+            position:relative;
+            background-color: #0a0500;
+        }
+        .card-body
+        {
+            text-align:left;
+            font-size:1rem;
+            color:whitesmoke;
+        }
+        .card-deck {
+            margin: 70px 50px 70px;
+        }
+        .paycard-color{
+            color:black;
+        }
+        h5{
+            color: aliceblue;
         }
 
-        /* Navigation bar style */
-        .navbar {
-            background-color: #333; /* Dark background */
-        }
 
-        .navbar-light .navbar-nav .nav-link {
-            color: #fff; /* Light text */
-        }
+        
+p {
+    color: #8f8f8f;
+    font-size:20px;
+}
 
-        .navbar-light .navbar-toggler-icon {
-            background-color: #fff; /* Light color for the toggle icon */
-        }
-
-        /* Adjust the container width */
-        .container {
-            max-width: 950px; /* Change this value to your desired width */
-            margin: 0 auto; /* Center the container horizontally */
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark container background */
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Card style */
-        .card {
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark card background */
-            color: #fff; /* Light text in the card */
-            border-radius: 10px; /* Rounded corners */
-            padding: 15px; /* Add some padding for spacing */
-        }
-
-        /* ... (existing styles) ... */
-        .list-group-item {
-            background-color: #333; /* Dark background for list items */
-            color: #fff; /* Light text for list items */
-        }
-    </style>
+.navbar-brand {
+    font-size: 2.5rem;
+    font-family: "ubuntu";
+    font-weight: bold;
+}
+   </style>
 </head>
-<body>
-
-<nav class="navbar navbar-expand-lg" >
+<body class="bodycolor">
+<nav class="navbar navbar-expand-lg navbar-dark" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+            <img th:src="@{/images/pngwing.com (5).png}"  src="images/pngwing.com (5).png" width="auto" height="70" alt=""/>Caku store
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -93,10 +89,11 @@
                     <span class="nav-link" th:text="${cartCount}">0</span>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>
-<div class="container">
+<div class="container-fluid">
 
     <!--Section: Block Content-->
     <section class="mt-5 mb-4">
@@ -108,10 +105,10 @@
             <div class="col-lg-8 mb-4">
 
                 <!-- Card -->
-                <div class="card wish-list pb-1">
-                    <div class="card-body">
+                <div class="card wish-list pb-1 card-bgcolor">
+                    <div class="card-body ">
 
-                        <h5 class="mb-2">Billing details</h5>
+                        <h4 class="mb-2">Billing details</h4>
 
                         <!-- Grid row -->
                         <div class="row">
@@ -143,10 +140,14 @@
                         </div>
                         <!-- Grid row -->
 
+
+
                         <!-- Country -->
                         <div class="d-flex flex-wrap">
                             <div class="select-outline position-relative w-100">
                                 <label>Country - <strong>INDIA</strong></label>
+
+
                             </div>
                         </div>
 
@@ -173,6 +174,7 @@
                         <div class="md-form md-outline mt-2">
                             <label for="form17">Town / City</label>
                             <input type="text" required id="form17" class="form-control">
+
                         </div>
 
                         <!-- Phone -->
@@ -193,6 +195,8 @@
                             <textarea id="form76" class="md-textarea form-control" rows="4"></textarea>
                         </div>
 
+
+
                     </div>
                 </div>
                 <!-- Card -->
@@ -205,7 +209,7 @@
 
                 <!-- Card -->
                 <div class="card mb-4">
-                    <div class="card-body">
+                    <div class="card-body paycard-color">
 
                         <h5 class="mb-3">The total amount </h5>
 
@@ -230,7 +234,7 @@
                         </ul>
 
                         <form action="" method="post" th:action="@{/orderPlaced}" >
-                            <button type="submit"  class="btn btn-primary btn-block waves-effect waves-light">Pay Now</button>
+                            <button type="submit"  class="btn btn-dark btn-block waves-effect waves-light">Pay Now</button>
                         </form>
 
                     </div>
@@ -268,12 +272,15 @@
     </section>
     <!--Section: Block Content-->
 
+
 </div>
 
-<!-- jQuery, Popper.js, and Bootstrap JS -->
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
 </body>
 </html>

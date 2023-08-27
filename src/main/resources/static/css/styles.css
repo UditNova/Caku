@@ -1,0 +1,264 @@
+body {
+    font-family: "Montserrat" sans-serif;
+}
+
+.searchbar{
+    border-radius:5%;
+}
+
+
+/* title section */
+
+#title {
+    font-size: 20px;
+    padding-bottom:110px;
+}
+.title-heading {
+    font-size: 3.5rem;
+    line-height: 1.5;
+    font-weight: 1000;
+    color: white;
+}
+
+.navbar {
+    padding-bottom: 1rem;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+    font-family: "ubuntu";
+    font-weight: bold;
+}
+
+.nav-item {
+    padding: 0 10px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat";
+}
+
+p {
+    color: #8f8f8f;
+    font-size:20px;
+}
+
+.container-fluid {
+    padding: 3% 15% 7%;
+}
+
+
+.imgrotate {
+    width: 70%;
+    transform: rotate(20deg);
+    position: absolute;
+    /* right: 10px; */
+}
+
+
+/* feature section */
+
+.feature-heading {
+    font-weight: bolder;
+}
+
+#features {
+    position: relative;
+}
+
+.feature-box {
+    text-align: center;
+    padding: 4.5rem;
+}
+.icon {
+    color:#c16e3b;
+    margin-bottom: 1rem;
+}
+
+.icon:hover {
+    color: #c6893f;
+}
+
+
+/* testimonial section */
+
+#testimonials {
+    background-color:#1e130b;
+    text-align: center;
+    color: #fff;
+}
+
+.testimonial-img {
+    border-radius: 100px;
+    width: 70%;
+    margin: 2%;
+}
+
+
+.carousel-item {
+    padding: 10% 15%;
+}
+
+/* price section */
+.price-main-text{
+    font-weight:bold;
+    font-size:2rem;
+    color: white;
+}
+.price-sub-text{
+    font-weight:bold;
+}
+#pricing{
+    font-family: "Montserrat";
+}
+.pricing-heading{
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.pricebtn1,
+.pricebtn2 {
+    width: 100%;
+    padding: 7px 15px;
+    font-size: 1.35rem;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.pricebtn1:hover {
+    background-color: black;
+    color: white;
+}
+
+.pricebtn2 {
+    color: white;
+    background-color: black;
+}
+
+#pricing {
+    padding: 100px;
+}
+
+.cardsclass {
+    
+    text-align: center;
+    
+}
+.card{
+    border-radius:17px;
+    height:50;
+    width:100;
+}
+.card-body{
+    text-align:left;
+    font-size:2rem;
+    color: white;
+    background-color:#1e130b;
+}
+
+.rounded-card {
+    border-radius: 50px; 
+    overflow: hidden; 
+}
+
+.card-img{
+    border-radius:55%;
+}
+
+
+.card-deck {
+    margin: 70px 50px 70px;
+}
+
+.rounded-button {
+    border-radius: 30px; 
+    overflow: hidden; 
+}
+
+/* @media query */
+
+@media (max-width:1171.11px) {
+    .imgrotate {
+        position: static;
+        transform: rotate(0);
+    }
+    #titile {
+        text-align: center;
+    }
+}
+
+
+/* cta section */
+
+#cta {
+    padding: 10% 15%;
+    text-align: center;
+}
+
+.ctatext {
+    font-weight: 30%;
+    font-size: 3.50rem;
+    font-family: "Montserrat";
+    font-weight: bolder;
+    color: #fff;
+}
+
+
+/* footer section */
+
+#footer {
+    text-align: center;
+    color: grey;
+    font-size: 1.25rem;
+}
+
+.social-links {
+    margin: 40px 12px 20px 30px;
+}
+
+.color-background {
+    background-color:#1e130b;
+    color: white;
+}
+
+.white-background {
+    background-color: white;
+    color: black;
+    padding: 7% 15%;}
+
+    .bg-color{
+        background-color: #0b0502;
+    }
+    
+
+.background-img {
+    background-image: url('images\\calum-lewis-rkT_TG5NKF8-unsplash.jpg'); 
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    opacity: 0.5;
+}
+
+
+.color-background {
+    background-image: url('https://images.unsplash.com/photo-1615832494873-b0c52d519696?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNha2UlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=6');
+    background-size: cover;
+    background-position: center; 
+}
+
+.cardbg-image{
+    background-image:url('https://img.freepik.com/free-photo/assortment-delicious-chocolate-cake_23-2148875599.jpg?size=626&ext=jpg&ga=GA1.2.1864019702.1691990192&semt=ais') ;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center;
+}

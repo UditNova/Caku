@@ -11,11 +11,30 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<style>
+    .bodycolor{
+        background-color:#5f4b3d;
+    }
+
+    .navbar-brand {
+        font-size: 2.5rem;
+        font-family: "ubuntu";
+        font-weight: bold;
+    }
+    .nav-item {
+        padding: 0 10px;
+    }
+    .navbar {
+        padding-bottom: 5.5rem;
+    }
+    
+</style>
+<body class="bodycolor">
+<nav class="navbar navbar-expand-lg navbar-dark" >
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+        <a class="navbar-brand " href="#">
+            <img th:src="@{/images/pngwing.com (5).png}"  src="../static/images/pngwing.com (5).png" width="auto" height="70" class="d-inline-block align-top" alt=""/>
+            Caku store
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

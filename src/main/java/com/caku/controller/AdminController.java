@@ -59,7 +59,7 @@ public class AdminController {
 
     //admin->categories->add->save
     @PostMapping("/admin/categories/add")
-    public String postCategory(@ModelAttribute("category") Category category){
+    public String postCategory(@ModelAttribute Category category){
         categoryService.addCategory(category);
         return "redirect:/admin/categories";
     }
@@ -105,9 +105,9 @@ public class AdminController {
     
     //admin->products->addproducts->submit
     @PostMapping("/admin/products/add")
-    public String productAddPost(@ModelAttribute("productDTO")ProductDTO productDTO, 
+    public String productAddPost(@ModelAttribute ProductDTO productDTO, 
     		@RequestParam("productImage")MultipartFile file,
-    		@RequestParam("imgName")String imgName)throws IOException{
+            @RequestParam String imgName)throws IOException{
     	
     	Product product=new Product();
     	product.setId(productDTO.getId());
